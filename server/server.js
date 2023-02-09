@@ -2,9 +2,10 @@ import express from "express";
 import cors from "cors";
 import router from "./routes/test.js";
 import * as dotenv from "dotenv";
-import mongoose from "mongoose";
-
 dotenv.config();
+import mongoose from "mongoose"; 
+import recipeRoutes from "./routes/recipeRoutes.js" 
+
 
 const app = express();
 
@@ -16,6 +17,7 @@ const corsOptions = {
 const port = process.env.PORT || 5000;
 
 const mongoDBConnection = async () => {
+  mongoose.set('strictQuery', false);
   try {
     await mongoose.connect(process.env.DB);
     console.log("Connection to Mongo DB established on port: " + port);
@@ -26,6 +28,7 @@ const mongoDBConnection = async () => {
 
 const loadRoutes = () => {
   app.use("/api", router);
+  app.use("/api/recipes", recipeRoutes);
 };
 
 const startServer = () => {
