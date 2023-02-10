@@ -3,9 +3,8 @@ import cors from "cors";
 import router from "./routes/test.js";
 import * as dotenv from "dotenv";
 dotenv.config();
-import mongoose from "mongoose"; 
-import recipeRoutes from "./routes/recipeRoutes.js" 
-
+import mongoose from "mongoose";
+import recipeRoutes from "./routes/recipeRoutes.js";
 
 const app = express();
 
@@ -17,7 +16,7 @@ const corsOptions = {
 const port = process.env.PORT || 5000;
 
 const mongoDBConnection = async () => {
-  mongoose.set('strictQuery', false);
+  mongoose.set("strictQuery", false);
   try {
     await mongoose.connect(process.env.DB);
     console.log("Connection to Mongo DB established on port: " + port);
@@ -53,4 +52,4 @@ const addMiddlewares = () => {
   startServer();
 })();
 
-
+app.use(cors());
