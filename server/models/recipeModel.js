@@ -11,11 +11,7 @@ const recipeSchema = new mongoose.Schema({
     required: true,
     unique: false,
   },
-  readyInMinutes: {
-    type: String,
-    required: true,
-    unique: false,
-  },
+ 
   ingredients: {
     type: String,
     required: true,
@@ -29,6 +25,11 @@ const recipeSchema = new mongoose.Schema({
   likes: {
     type: Number,
     required: false,
+  },
+  readyIn: {
+    type: String,
+    required: true,
+    unique: false,
   },
 });
 
