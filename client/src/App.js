@@ -1,9 +1,11 @@
 import React from "react";
 import { useEffect } from "react";
-import { Button, Container } from "@mui/material";
+import { Container } from "@mui/material";
 import { ThemeProvider } from "@mui/system";
 import theme from "./styles/theme";
 import AppBar from "./components/appBar/AppBar";
+import Banner from "./components/hero/hero";
+import Categories from "./components/categories/categories";
 
 function App() {
   useEffect(() => {
@@ -19,7 +21,8 @@ function App() {
         }}
       >
         <AppBar />
-        <Button variant="contained"> Test</Button>
+        <Banner />
+        <Categories />
       </Container>
     </ThemeProvider>
   );
