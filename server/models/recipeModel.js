@@ -33,6 +33,8 @@ const recipeSchema = new mongoose.Schema({
   },
 });
 
+ 
+
 const recipeModel = mongoose.model("recipe", recipeSchema);
 
 export default recipeModel;

@@ -8,16 +8,16 @@ import {
   HeroImage,
 } from "../../styles/banner";
 
-export default function Banner() {
+export default function Hero() {
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down("md"));
+  //const matches = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <HeroContainer>
       <HeroImage src="/images/banner/banner.png" />
       <HeroContent>
-        <Typography variant="h6">Collection</Typography>
-        <HeroTitle variant="h2">Recipes</HeroTitle>
+        <Typography variant="h6">Welcome to</Typography>
+        <HeroTitle variant="h2">Sweetpedia</HeroTitle>
         <HeroDescription variant="subtitle">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
