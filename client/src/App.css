@@ -1,3 +1,9 @@
 .App {
   text-align: center;
 }
+.movies-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(234px, 1fr));
+  grid-column-gap: 1rem;
+  grid-row-gap: 2rem;
+}
