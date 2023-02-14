@@ -7,28 +7,26 @@ import { CardActionArea } from "@mui/material";
 
 const Recipe = ({ recipe }) => {
   return (
-    <div>
-      <Card sx={{ maxWidth: 345 }}>
-        <CardActionArea>
-          <CardMedia height="140" />
+    <Card sx={{ maxWidth: 345 }}>
+      <CardActionArea>
+        <CardMedia
+          height="140"
+          component="img"
+          image="/images/S_mores-Pancakes-5-hero.jpeg"
+          alt="dessert"
+        />
 
-          <CardContent>
-            <Typography
-              key={recipe.id}
-              gutterBottom
-              variant="h5"
-              component="div"
-            >
-              {recipe.title}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Lizards are a widespread group of squamate reptiles, with over
-              6,000 species, ranging across all continents except Antarctica
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-      </Card>
-    </div>
+        <CardContent>
+          <Typography key={recipe.id} gutterBottom variant="h5" component="div">
+            {recipe.title}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. faucibus
+            arcu. Nullam volutpat consectetur lacus quis semper.
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+    </Card>
   );
 };
 export default Recipe;
