@@ -1,17 +1,13 @@
-import { Typography, useMediaQuery } from "@mui/material";
-import { useTheme } from "@mui/system";
+import { Typography } from "@mui/material";
 import {
   HeroContainer,
   HeroContent,
   HeroTitle,
   HeroDescription,
   HeroImage,
-} from "../../styles/banner";
+} from "../../styles/hero";
 
 export default function Hero() {
-  const theme = useTheme();
-  //const matches = useMediaQuery(theme.breakpoints.down("md"));
-
   return (
     <HeroContainer>
       <HeroImage src="/images/banner/banner.png" />

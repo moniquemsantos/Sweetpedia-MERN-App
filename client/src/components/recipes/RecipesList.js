@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import RecipeCard from "./RecipeCard";
+import { Grid } from "@mui/material";
+import { Container } from "@mui/system";
 
 function RecipesList() {
   const [fetchResult, setFetchResult] = useState([]);
@@ -28,7 +30,21 @@ function RecipesList() {
         <p>Something went wrong</p>
       ) : (
         fetchResult.map((recipe) => {
-          return < RecipeCard key={recipe.id} recipe={recipe}/>;
+          return (
+            <>
+              <Container>
+                <Grid
+                  item
+                  container
+                  justifyContent={"center"}
+                  sx={{ margin: "20px 4px 10px 4px" }}>
+                  
+                <RecipeCard key={recipe.id} recipe={recipe} />
+              
+                </Grid>
+              </Container>
+            </>
+          );
         })
       )}
     </div>
