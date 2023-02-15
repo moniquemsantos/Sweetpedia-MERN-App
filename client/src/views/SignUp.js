@@ -1,12 +1,9 @@
+function Login() {
+  return (
+    <div>
+      <p>Login</p>
+    </div>
+  );
+}
 
-
-function SignUp() {
-    return (
-      <div>
-        <p>SignUp</p>
-       
-      </div>
-    );
-  }
-  
-  export default SignUp;
+export default Login;

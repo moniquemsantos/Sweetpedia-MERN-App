@@ -31,6 +31,12 @@ const recipeSchema = new mongoose.Schema({
     required: true,
     unique: false,
   },
+
+  image: {
+    type: String,
+    required: true,
+    unique: true,
+  },
 });
 
  
