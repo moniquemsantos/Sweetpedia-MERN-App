@@ -37,10 +37,9 @@ function RecipesList() {
                   item
                   container
                   justifyContent={"center"}
-                  sx={{ margin: "20px 4px 10px 4px" }}>
-                  
-                <RecipeCard key={recipe.id} recipe={recipe} />
-              
+                  sx={{ margin: "20px 4px 10px 4px" }}
+                >
+                  <RecipeCard key={recipe.id} recipe={recipe} />
                 </Grid>
               </Container>
             </>

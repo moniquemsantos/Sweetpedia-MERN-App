@@ -3,11 +3,7 @@ import { useEffect } from "react";
 import { Container } from "@mui/material";
 import { ThemeProvider } from "@mui/system";
 import theme from "./styles/theme";
-import AppBar from "./components/appBar/AppBar";
-import Banner from "./components/hero/Hero";
-import Categories from "./components/categories/Categories";
-import RecipesList from "./components/recipes/RecipesList";
-
+import HomePage from "./views/Home";
 
 function App() {
   useEffect(() => {
@@ -22,10 +18,7 @@ function App() {
           background: "#fff",
         }}
       >
-        <AppBar />
-        <Banner />
-        <Categories />
-        <RecipesList/>
+        <HomePage />
       </Container>
     </ThemeProvider>
   );

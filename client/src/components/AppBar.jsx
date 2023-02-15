@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  AppBarContainer,
-  AppBarHeader,
-  HamburgerIcon,
-} from "../../styles/appBar";
+import { AppBarContainer, AppBarHeader, HamburgerIcon } from "../styles/appBar";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
@@ -11,7 +7,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 import Tooltip from "@mui/material/Tooltip";
-import { MyList } from "../../styles/appBar";
+import { MyList } from "../styles/appBar";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
 

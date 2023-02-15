@@ -5,7 +5,7 @@ import {
   HeroTitle,
   HeroDescription,
   HeroImage,
-} from "../../styles/hero";
+} from "../styles/hero";
 
 export default function Hero() {
   return (
