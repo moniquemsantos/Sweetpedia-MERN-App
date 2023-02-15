@@ -12,7 +12,7 @@ const Recipe = ({ recipe }) => {
         <CardMedia
           height="140"
           component="img"
-          image="/images/S_mores-Pancakes-5-hero.jpeg"
+          image={recipe.image}
           alt="dessert"
         />
 
