@@ -5,6 +5,8 @@ import * as dotenv from "dotenv";
 dotenv.config();
 import mongoose from "mongoose";
 import recipeRoutes from "./routes/recipeRoutes.js";
+import usersRoutes from "./routes/usersRoutes.js";
+import cloudinaryConfig from "./config/cloudinaryConfig.js";
 
 const app = express();
 
@@ -28,6 +30,7 @@ const mongoDBConnection = async () => {
 const loadRoutes = () => {
   app.use("/api", router);
   app.use("/api/recipes", recipeRoutes);
+  app.use("/api/users", usersRoutes);
 };
 
 const startServer = () => {
@@ -43,6 +46,7 @@ const addMiddlewares = () => {
       extended: true,
     })
   );
+  cloudinaryConfig();
 };
 
 (async function controller() {
