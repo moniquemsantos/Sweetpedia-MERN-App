@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, Fragment } from "react";
 import RecipeCard from "./RecipeCard";
 import { Grid } from "@mui/material";
 import { Container } from "@mui/system";
@@ -31,7 +31,7 @@ function RecipesList() {
       ) : (
         fetchResult.map((recipe) => {
           return (
-            <>
+            <div key={recipe._id}>
               <Container>
                 <Grid
                   item
@@ -39,10 +39,10 @@ function RecipesList() {
                   justifyContent={"center"}
                   sx={{ margin: "20px 4px 10px 4px" }}
                 >
-                  <RecipeCard key={recipe.id} recipe={recipe} />
+                  <RecipeCard recipe={recipe} />
                 </Grid>
               </Container>
-            </>
+            </div>
           );
         })
       )}
