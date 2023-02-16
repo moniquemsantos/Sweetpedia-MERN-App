@@ -1,6 +1,7 @@
 import { v2 as cloudinary } from "cloudinary";
 import userModel from "../models/userModel.js";
 import { passwordEncryption, verifyPassword } from "../utils/bcrypt.js";
+import generateToken from "../utils/jwt.js";
 
 const imageUpload = async (req, res) => {
   console.log(req.file);
@@ -80,7 +81,19 @@ const login = async (req, res) => {
       } else {
         // email exists and password is correct
 
-        res.status(200).json({ msg: "you are logged in" });
+        const token = generateToken(existingUser.id);
+        console.log("token", token);
+
+        res.status(200).json({
+          msg: "you are logged in!!!",
+          user: {
+            id: existingUser._id,
+            userName: existingUser.userName,
+            email: existingUser.email,
+            userPicture: existingUser.userPicture,
+          },
+          token,
+        });
       }
     }
   } catch (error) {
