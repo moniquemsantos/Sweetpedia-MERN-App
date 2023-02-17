@@ -4,9 +4,11 @@ import router from "./routes/test.js";
 import * as dotenv from "dotenv";
 dotenv.config();
 import mongoose from "mongoose";
+import passport from "passport";
 import recipeRoutes from "./routes/recipeRoutes.js";
 import usersRoutes from "./routes/usersRoutes.js";
 import cloudinaryConfig from "./config/cloudinaryConfig.js";
+import { jwtStrategy } from "./config/passportConfig.js";
 
 const app = express();
 
@@ -15,11 +17,13 @@ const corsOptions = {
   credentials: true,
 };
 
+
+
 const port = process.env.PORT || 5000;
 
 const mongoDBConnection = async () => {
   mongoose.set("strictQuery", false);
-  try {
+  try {  
     await mongoose.connect(process.env.DB);
     console.log("Connection to Mongo DB established on port: " + port);
   } catch (error) {
@@ -48,6 +52,9 @@ const addMiddlewares = () => {
   );
   cloudinaryConfig();
 };
+
+app.use(passport.initialize());
+passport.use(jwtStrategy);
 
 (async function controller() {
   await mongoDBConnection();
