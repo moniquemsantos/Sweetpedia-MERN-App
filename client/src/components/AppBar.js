@@ -5,6 +5,7 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import { useNavigate } from "react-router-dom";
 import { ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 import Tooltip from "@mui/material/Tooltip";
 import { MyList } from "../styles/appBar";
@@ -17,6 +18,9 @@ const settings = ["Profile", "Logout"];
 function AppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+
+  const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -76,9 +80,15 @@ function AppBar() {
           </Menu>
         </Box>
         <MyList type="row">
+        <ListItemButton onClick={() => navigate("/")}>
           <ListItemText primary="Home" />
+         </ListItemButton>
+         <ListItemButton onClick={() => navigate("")}>
           <ListItemText primary="Popular" />
+          </ListItemButton>
+          <ListItemButton onClick={() => navigate("")}>
           <ListItemText primary="Quick & Easy" />
+          </ListItemButton>
           <ListItemButton>
             <ListItemIcon>
               <SearchIcon />

@@ -3,7 +3,9 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { CardActionArea } from "@mui/material";
+import { CardActionArea, CardActions } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const Recipe = ({ recipe }) => {
   return (
@@ -26,6 +28,11 @@ const Recipe = ({ recipe }) => {
           </Typography>
         </CardContent>
       </CardActionArea>
+      <CardActions>
+      <IconButton aria-label="add to favorites">
+        <FavoriteIcon />
+      </IconButton>
+      </CardActions>
     </Card>
   );
 };

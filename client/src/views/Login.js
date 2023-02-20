@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react";
+import { Grid, TextField, Typography } from "@mui/material";
+import AppBar from "../components/AppBar";
 import { getToken } from "../utils/getToken";
+import Footer from "../components/Footer";
+import { AvatarStyle, BtnStyle, PaperLogin } from "../styles/Login";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import { Link } from "react-router-dom";
 
 function Login() {
   const [loginUser, setLoginUser] = useState({});
@@ -52,31 +58,53 @@ function Login() {
   }, [loginUser]);
 
   return (
-    <div className="show-borders">
-      <button style={{ backgroundColor: "red" }} onClick={logout}>
+    <>
+      <Grid>
+        <AppBar />
+        <button style={{ backgroundColor: "red" }} onClick={logout}>
         logout
       </button>
-      <h2>Login</h2>
 
-      <div className="container">
-        <label htmlFor="login-email">email</label>
-        <input
-          type="email"
-          name="email"
-          id="login-email"
-          onChange={handleInputChange}
-        />
-        <label htmlFor="login-password"> password</label>
-        <input
-          type="password"
-          name="password"
-          id="login-password"
-          onChange={handleInputChange}
-        />
-      </div>
+        <PaperLogin>
+          <Grid align="center">
+            <AvatarStyle>
+              <LockOutlinedIcon />
+            </AvatarStyle>
+            <h2>Login</h2>
+          </Grid>
+          <TextField
+            variant="standard"
+            label="Email"
+            id="email"
+            fullWidth
+            required
+            onChange={handleInputChange}
+          />
 
-      <button onClick={login}>Login</button>
-    </div>
+          <TextField
+            variant="standard"
+            label="Password"
+            type="password"
+            fullWidth
+            required
+            onChange={handleInputChange}
+          />
+
+          <BtnStyle onClick={login} type="submit" variant="contained" fullWidth>
+            Login
+          </BtnStyle>
+
+          <Typography>
+            {" "}
+            Do you have an account?
+            <Link to="/signup">Sign Up</Link>
+          </Typography>
+        </PaperLogin>
+        
+      </Grid>
+      <Footer/>
+    </>
+    
   );
 }
 
