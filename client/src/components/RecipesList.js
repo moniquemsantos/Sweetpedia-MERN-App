@@ -1,4 +1,4 @@
-import { useEffect, useState, Fragment } from "react";
+import { useEffect, useState } from "react";
 import RecipeCard from "./RecipeCard";
 import { Grid } from "@mui/material";
 import { Container } from "@mui/system";
