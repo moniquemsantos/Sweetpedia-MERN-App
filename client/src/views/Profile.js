@@ -1,6 +1,6 @@
 
 
-function UserProfile() {
+function Profile() {
     return (
       <div>
         <p>UserProfile</p>
@@ -9,4 +9,4 @@ function UserProfile() {
     );
   }
   
-  export default UserProfile;
+  export default Profile;

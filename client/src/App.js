@@ -7,7 +7,7 @@ import theme from "./styles/theme";
 import HomePage from "./views/Home";
 import SignUp from "./views/SignUp";
 import Login from "./views/Login";
-import UserProfile from "./views/UserProfile";
+import Profile from "./views/Profile";
 
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<SignUp />} />
-          <Route path="userprofile" element={<UserProfile />} />
+          <Route path="profile" element={<Profile />} />
         </Routes>
       </Container>
     </ThemeProvider>
