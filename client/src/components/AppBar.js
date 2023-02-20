@@ -11,7 +11,7 @@ import { MyList } from "../styles/appBar";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
 
-const pages = ["Home", "About us", "Contact us"];
+const pages = ["Home", "Popular", "Quick & Easy"];
 const settings = ["Profile", "Logout"];
 
 function AppBar() {
@@ -77,8 +77,8 @@ function AppBar() {
         </Box>
         <MyList type="row">
           <ListItemText primary="Home" />
-          <ListItemText primary="About us" />
-          <ListItemText primary="Contact us" />
+          <ListItemText primary="Popular" />
+          <ListItemText primary="Quick & Easy" />
           <ListItemButton>
             <ListItemIcon>
               <SearchIcon />
