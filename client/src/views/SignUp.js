@@ -1,4 +1,15 @@
 import { useState } from "react";
+import {
+  AvatarStyle,
+  PaperSignUp,
+  TextFieldImageUpload,
+  BtnUploadStyle,
+  BtnSignUpStyle,
+} from "../styles/signUp";
+import { Grid, TextField, Typography } from "@mui/material";
+import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
+import AppBar from "../components/AppBar";
+import Footer from "../components/Footer";
 
 function SignUp() {
   // Check email format, password lenght ...avoid making useless requests to the server
@@ -56,37 +67,84 @@ function SignUp() {
   };
 
   return (
-    <div>
-      <div className="container">
-        <input
-          type="text"
-          name="userName"
-          id="userName"
-          onChange={handleInputChange}
-        />
-        <label htmlFor="userName">User Name</label>
-        <input
-          type="text"
-          name="email"
-          id="email"
-          onChange={handleInputChange}
-        />
-        <label htmlFor="email">email</label>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          onChange={handleInputChange}
-        />
-        <label htmlFor="password">password</label>
-      </div>
-      <form>
-        <input type="file" name="file" onChange={handleAttachPicture} />
-        <button onClick={submitPicture}>Upload</button>
-      </form>
-      <button onClick={signUp}>Sign Up</button>
-      <div>{newUser && <img src={newUser.userPicture} alt="" />}</div>
-    </div>
+    <>
+      <Grid>
+        <AppBar />
+        <PaperSignUp>
+          <Grid align="center">
+            <AvatarStyle>
+              <AddCircleOutlineOutlinedIcon />
+            </AvatarStyle>
+            <h2>Sign up</h2>
+            <Typography variant="caption" gutterBottom>
+              Please fill this form to create an account
+            </Typography>
+          </Grid>
+          <TextField
+            fullWidth
+            variant="standard"
+            type="text"
+            name="userName"
+            label="User Name"
+            placeholder="Enter your username"
+            id="userName"
+            onChange={handleInputChange}
+          />
+
+          <TextField
+            fullWidth
+            variant="standard"
+            type="text"
+            name="email"
+            label="email"
+            placeholder="Enter your Email"
+            id="email"
+            onChange={handleInputChange}
+          />
+
+          <TextField
+            fullWidth
+            variant="standard"
+            type="password"
+            name="password"
+            label="password"
+            placeholder="Enter your password"
+            id="password"
+            onChange={handleInputChange}
+          />
+          <TextFieldImageUpload
+            fullWidth
+            variant="standard"
+            type="file"
+            name="file"
+            onChange={handleAttachPicture}
+          />
+          <BtnUploadStyle
+            type="submit"
+            variant="contained"
+            size="small"
+            onClick={submitPicture}
+          >
+            Upload
+          </BtnUploadStyle>
+
+          <BtnSignUpStyle
+            fullWidth
+            type="submit"
+            variant="contained"
+            onClick={signUp}
+          >
+            Sign Up
+          </BtnSignUpStyle>
+          <div>
+            {newUser && (
+              <img src={newUser.userPicture} alt="" width={"152px"} />
+            )}
+          </div>
+        </PaperSignUp>
+      </Grid>
+      <Footer />
+    </>
   );
 }
 

@@ -3,7 +3,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { styled } from "@mui/material/styles";
 import { Box } from "@mui/system";
 import { Colors } from "../theme";
-import "@fontsource/montez";
+import "@fontsource/carattere"
 
 //container
 export const AppBarContainer = styled(Box)(() => ({
@@ -21,7 +21,7 @@ export const AppBarHeader = styled(Typography)(() => ({
   flexGrow: 1,
   padding: "4px",
   fontSize: "4em",
-  fontFamily: "Montez, 'cursive'",
+  fontFamily: "Carattere, 'cursive'",
   color: Colors.secondary,
 }));
 
