@@ -14,8 +14,9 @@ function Login() {
     setLoginUser({ ...loginUser, [e.target.name]: e.target.value });
   };
 
-  const login = () => {
-    // Check email format, password lenght ...avoid making useless requests to the server
+  const login = (e) => {
+    e.preventDefault();
+    // TODO: validation
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
@@ -57,13 +58,17 @@ function Login() {
     }
   }, [loginUser]);
 
+  const linkStyle = {
+    margin: "8px",
+  };
+
   return (
     <>
       <Grid>
         <AppBar />
         <button style={{ backgroundColor: "red" }} onClick={logout}>
-        logout
-      </button>
+          logout
+        </button>
 
         <PaperLogin>
           <Grid align="center">
@@ -74,7 +79,8 @@ function Login() {
           </Grid>
           <TextField
             variant="standard"
-            label="Email"
+            label="email"
+            name="email"
             id="email"
             fullWidth
             required
@@ -83,8 +89,9 @@ function Login() {
 
           <TextField
             variant="standard"
-            label="Password"
+            label="password"
             type="password"
+            name="password"
             fullWidth
             required
             onChange={handleInputChange}
@@ -97,14 +104,14 @@ function Login() {
           <Typography>
             {" "}
             Do you have an account?
-            <Link to="/signup">Sign Up</Link>
+            <Link to="/signup" style={linkStyle}>
+              Sign Up
+            </Link>
           </Typography>
         </PaperLogin>
-        
       </Grid>
-      <Footer/>
+      <Footer />
     </>
-    
   );
 }
 
