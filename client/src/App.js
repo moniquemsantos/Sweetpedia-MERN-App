@@ -9,6 +9,7 @@ import SignUp from "./views/SignUp";
 import Login from "./views/Login";
 import Profile from "./views/Profile";
 import { RecipesContextProvider } from "./store/RecipesContext";
+import { AuthContextProvider } from "./store/AuthContext";
 
 function App() {
   useEffect(() => {
@@ -23,6 +24,7 @@ function App() {
           background: "#fff",
         }}
       >
+        <AuthContextProvider>
         <RecipesContextProvider>
           <Routes>
             <Route path="/" element={<HomePage />} />
@@ -31,6 +33,7 @@ function App() {
             <Route path="profile" element={<Profile />} />
           </Routes>
         </RecipesContextProvider>
+        </AuthContextProvider>
       </Container>
     </ThemeProvider>
   );
