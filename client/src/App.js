@@ -25,14 +25,14 @@ function App() {
         }}
       >
         <AuthContextProvider>
-        <RecipesContextProvider>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="login" element={<Login />} />
-            <Route path="signup" element={<SignUp />} />
-            <Route path="profile" element={<Profile />} />
-          </Routes>
-        </RecipesContextProvider>
+          <RecipesContextProvider>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="login" element={<Login />} />
+              <Route path="signup" element={<SignUp />} />
+              <Route path="profile" element={<Profile />} />
+            </Routes>
+          </RecipesContextProvider>
         </AuthContextProvider>
       </Container>
     </ThemeProvider>

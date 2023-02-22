@@ -8,16 +8,12 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { AuthContext } from "../store/AuthContext";
 
 function Login() {
-  const { login, logout, handleInputChange } = useContext(AuthContext);
+  const { login, handleInputChange } = useContext(AuthContext);
 
   return (
     <>
       <Grid>
         <AppBar />
-        <button onClick={logout} style={{ backgroundColor: "red" }}>
-          logout
-        </button>
-
         <PaperLogin>
           <Grid align="center">
             <AvatarStyle>
@@ -34,7 +30,6 @@ function Login() {
             required
             onChange={handleInputChange}
           />
-
           <TextField
             variant="standard"
             label="password"
@@ -44,11 +39,10 @@ function Login() {
             required
             onChange={handleInputChange}
           />
-
           <BtnStyle onClick={login} type="submit" variant="contained" fullWidth>
             Login
           </BtnStyle>
-
+          a
           <Typography>
             {" "}
             Do you have an account?

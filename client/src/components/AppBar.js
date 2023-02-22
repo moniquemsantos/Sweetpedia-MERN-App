@@ -1,4 +1,6 @@
 import React from "react";
+import { useContext } from "react";
+import { AuthContext } from "../store/AuthContext";
 import { AppBarContainer, AppBarHeader, HamburgerIcon } from "../styles/appBar";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
@@ -86,9 +88,7 @@ function AppBar() {
 
   let isLogged = true;
 
-  function handleLogout() {
-    console.log("logout");
-  }
+  const { logout } = useContext(AuthContext);
 
   return (
     <>
@@ -211,7 +211,7 @@ function AppBar() {
               ))}
               {isLogged ? (
                 <MenuItem>
-                  <Button onClick={handleLogout}>Logout</Button>
+                  <Button onClick={logout}>Logout</Button>
                 </MenuItem>
               ) : (
                 <MenuItem>
