@@ -8,7 +8,7 @@ import HomePage from "./views/Home";
 import SignUp from "./views/SignUp";
 import Login from "./views/Login";
 import Profile from "./views/Profile";
-
+import { RecipesContextProvider } from "./store/RecipesContext";
 
 function App() {
   useEffect(() => {
@@ -23,12 +23,14 @@ function App() {
           background: "#fff",
         }}
       >
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="login" element={<Login />} />
-          <Route path="signup" element={<SignUp />} />
-          <Route path="profile" element={<Profile />} />
-        </Routes>
+        <RecipesContextProvider>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="login" element={<Login />} />
+            <Route path="signup" element={<SignUp />} />
+            <Route path="profile" element={<Profile />} />
+          </Routes>
+        </RecipesContextProvider>
       </Container>
     </ThemeProvider>
   );

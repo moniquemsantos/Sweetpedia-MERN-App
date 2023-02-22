@@ -1,29 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import RecipeCard from "./RecipeCard";
 import { Grid } from "@mui/material";
 import { Container } from "@mui/system";
+import { RecipesContext } from "../store/RecipesContext";
 
 function RecipesList() {
-  const [fetchResult, setFetchResult] = useState([]);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchTryCatch = async () => {
-      try {
-        const response = await fetch("http://localhost:5000/api/recipes/all");
-        const result = await response.json();
-        setFetchResult(result.allRecipes);
-      } catch (error) {
-        console.log("Catch: ", error);
-        setError(error);
-      }
-    };
-
-    fetchTryCatch();
-  }, []);
-
-  console.log("fetchResult: ", fetchResult);
-
+  const { fetchResult, error } = useContext(RecipesContext);
   return (
     <div>
       {error ? (
