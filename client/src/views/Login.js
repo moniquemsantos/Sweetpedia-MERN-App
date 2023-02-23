@@ -42,7 +42,6 @@ function Login() {
           <BtnStyle onClick={login} type="submit" variant="contained" fullWidth>
             Login
           </BtnStyle>
-          a
           <Typography>
             {" "}
             Do you have an account?
@@ -55,6 +54,6 @@ function Login() {
       <Footer />
     </>
   );
-}
+};
 
 export default Login;
