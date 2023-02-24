@@ -2,7 +2,6 @@ import React from "react";
 import { createContext, useState, useEffect } from "react";
 import { getToken } from "../utils/getToken";
 
-
 export const AuthContext = createContext();
 
 export const AuthContextProvider = (props) => {
@@ -11,8 +10,6 @@ export const AuthContextProvider = (props) => {
   const handleInputChange = (e) => {
     setLoginUser({ ...loginUser, [e.target.name]: e.target.value });
   };
-
-
 
   const login = (e) => {
     e.preventDefault();
@@ -52,7 +49,7 @@ export const AuthContextProvider = (props) => {
     const token = getToken();
 
     if (token) {
-        console.log("LOGGED IN");
+      console.log("LOGGED IN");
     } else {
       console.log("NOT logged in");
     }
@@ -60,7 +57,14 @@ export const AuthContextProvider = (props) => {
 
   return (
     <AuthContext.Provider
-      value={{ loginUser, setLoginUser, login, handleInputChange, logout, getToken }}
+      value={{
+        loginUser,
+        setLoginUser,
+        login,
+        handleInputChange,
+        logout,
+        getToken,
+      }}
     >
       {props.children}
     </AuthContext.Provider>
