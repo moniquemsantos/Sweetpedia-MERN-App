@@ -4,14 +4,14 @@ const recipeSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
-    unique: true,
+    unique: false,
   },
   category: {
     type: String,
     required: true,
     unique: false,
   },
- 
+
   ingredients: {
     type: String,
     required: true,
@@ -22,10 +22,10 @@ const recipeSchema = new mongoose.Schema({
     required: true,
     unique: false,
   },
-  likes: {
-    type: Number,
-    required: false,
-  },
+  // likes: {
+  //   type: Number,
+  //   required: false,
+  // },
   readyIn: {
     type: String,
     required: true,
@@ -34,12 +34,10 @@ const recipeSchema = new mongoose.Schema({
 
   image: {
     type: String,
-    required: true,
-    unique: true,
+    // required: true,
+    // unique: true,
   },
 });
-
- 
 
 const recipeModel = mongoose.model("recipe", recipeSchema);
 

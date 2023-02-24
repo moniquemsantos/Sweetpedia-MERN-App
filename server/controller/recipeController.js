@@ -15,4 +15,31 @@ const getAllRecipes = async (req, res) => {
     });
   }
 };
-export { getAllRecipes };
+
+const addRecipe = async (req, res) => {
+  console.log("req.body>> ", req.body);
+
+  const newRecipe = new recipeModel({
+    title: req.body.title,
+    category: req.body.category,
+    ingredients: req.body.ingredients,
+    instructions: req.body.instructions,
+    readyIn: req.body.readyIn,
+    // image: req.body.image,
+  });
+  console.log("newRecipe :>> ", newRecipe);
+  try {
+    const savedRecipe = await newRecipe.save();
+
+    console.log("savedRecipe :>> ", savedRecipe);
+    res.status(200).json(savedRecipe);
+  } catch (err) {
+    console.log('err.message :>> ', err.message);
+    res.status(500).json({
+      msg: "Something went wrong",
+      error:err
+    });
+  }
+};
+
+export { getAllRecipes, addRecipe };
