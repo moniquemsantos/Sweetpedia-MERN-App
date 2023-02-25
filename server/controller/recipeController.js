@@ -1,4 +1,5 @@
 import recipeModel from "../models/recipeModel.js";
+import { v2 as cloudinary } from "cloudinary";
 
 const getAllRecipes = async (req, res) => {
   try {
@@ -16,6 +17,10 @@ const getAllRecipes = async (req, res) => {
   }
 };
 
+const imageRecipeUpload = async (req, res) => {
+  console.log("req>>>", req.file);
+};
+
 const addRecipe = async (req, res) => {
   console.log("req.body>> ", req.body);
 
@@ -25,7 +30,7 @@ const addRecipe = async (req, res) => {
     ingredients: req.body.ingredients,
     instructions: req.body.instructions,
     readyIn: req.body.readyIn,
-    // image: req.body.image,
+    image: image.url,
   });
   console.log("newRecipe :>> ", newRecipe);
   try {
@@ -34,12 +39,12 @@ const addRecipe = async (req, res) => {
     console.log("savedRecipe :>> ", savedRecipe);
     res.status(200).json(savedRecipe);
   } catch (err) {
-    console.log('err.message :>> ', err.message);
+    console.log("err.message :>> ", err.message);
     res.status(500).json({
       msg: "Something went wrong",
-      error:err
+      error: err,
     });
   }
 };
 
-export { getAllRecipes, addRecipe };
+export { getAllRecipes, addRecipe, imageRecipeUpload };
