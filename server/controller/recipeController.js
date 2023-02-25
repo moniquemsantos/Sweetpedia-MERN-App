@@ -19,6 +19,21 @@ const getAllRecipes = async (req, res) => {
 
 const imageRecipeUpload = async (req, res) => {
   console.log("req>>>", req.file);
+  try {
+    const recipePictureUpload = await cloudinary.uploader.upload(
+      req.file.path,
+      {
+        folder: "recipe-image",
+      }
+    );
+    console.log("reciperecipePictureUpload", recipePictureUpload);
+    res.status(200).json({
+      msg: "Good Job, your image was uploaded!",
+      recipePicture: recipePictureUpload.url,
+    });
+  } catch (error) {
+    res.status(400).json({ msg: "Sorry the upload went wrong" });
+  }
 };
 
 const addRecipe = async (req, res) => {
@@ -30,7 +45,7 @@ const addRecipe = async (req, res) => {
     ingredients: req.body.ingredients,
     instructions: req.body.instructions,
     readyIn: req.body.readyIn,
-    image: image.url,
+    image: req.body.image,
   });
   console.log("newRecipe :>> ", newRecipe);
   try {
