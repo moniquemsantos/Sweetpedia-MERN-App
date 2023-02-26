@@ -10,6 +10,7 @@ import Login from "./views/Login";
 import Profile from "./views/Profile";
 import { RecipesContextProvider } from "./store/RecipesContext";
 import { AuthContextProvider } from "./store/AuthContext";
+import NewRecipe from "./views/NewRecipe";
 
 function App() {
   useEffect(() => {
@@ -31,6 +32,7 @@ function App() {
               <Route path="login" element={<Login />} />
               <Route path="signup" element={<SignUp />} />
               <Route path="profile" element={<Profile />} />
+              <Route path="addRecipe" element={<NewRecipe/>} />
             </Routes>
           </RecipesContextProvider>
         </AuthContextProvider>
