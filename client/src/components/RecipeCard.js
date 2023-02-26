@@ -9,7 +9,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const Recipe = ({ recipe }) => {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345 }} >
       <CardActionArea>
         <CardMedia
           height="140"
