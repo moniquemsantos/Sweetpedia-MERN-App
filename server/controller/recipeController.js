@@ -52,14 +52,30 @@ const addRecipe = async (req, res) => {
     const savedRecipe = await newRecipe.save();
 
     console.log("savedRecipe :>> ", savedRecipe);
-    res.status(200).json(savedRecipe);
+    return res.status(200).json(savedRecipe);
   } catch (err) {
     console.log("err.message :>> ", err.message);
-    res.status(500).json({
+    return res.status(500).json({
       msg: "Something went wrong",
       error: err,
     });
   }
 };
 
-export { getAllRecipes, addRecipe, imageRecipeUpload };
+const updateRecipe = async (req, res) => {
+  
+
+  try {
+    const postUpdateRecipe = recipeModel.findById(req.params.id);
+      if (postUpdateRecipe.userId===req.body.userId)
+      {
+        await postUpdateRecipe.updateOne({$set:req.body});
+          return res.status(200).json("Recipe has been updated")
+      }
+      else{
+        return res.status(400).json("You can only update your post");
+      }
+  } catch (error) {}
+};
+
+export { getAllRecipes, addRecipe, imageRecipeUpload, updateRecipe };
