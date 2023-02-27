@@ -3,6 +3,7 @@ import {
   getAllRecipes,
   addRecipe,
   imageRecipeUpload,
+  updateRecipe,
 } from "../controller/recipeController.js";
 import jwt from "../middlewares/jwt.js";
 import { multerUpload } from "../middlewares/multer.js";
@@ -17,5 +18,6 @@ router.post(
   multerUpload.single("image"),
   imageRecipeUpload
 );
+router.put("/update-recipe/:id", updateRecipe);
 
 export default router;
