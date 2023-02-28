@@ -17,11 +17,12 @@ const getAllRecipes = async (req, res) => {
   }
 };
 
-const getRecipesByCategory = async(req, res) => {
-  console.log("req>>>", req.category);
+const getRecipesByCategory = async (req, res) => {
+  console.log("req>>>", req);
   const { category } = req.params;
-  try { 
-    const requestedRecipes = await recipeModel.find({category: category});
+
+  try {
+    const requestedRecipes = await recipeModel.find({ category: category });
     if (requestedRecipes.length === 0) {
       res.status(200).json({
         msg: "No recipes with that category code in our DB",
@@ -32,10 +33,10 @@ const getRecipesByCategory = async(req, res) => {
         requestedRecipes,
       });
     }
-  } catch(error){
-    res. status (500).json({
-      msg: "Something went wrong"
-    })
+  } catch (error) {
+    res.status(500).json({
+      msg: "Something went wrong",
+    });
   }
 };
 
@@ -100,4 +101,10 @@ const updateRecipe = async (req, res) => {
   }
 };
 
-export { getAllRecipes, addRecipe, imageRecipeUpload, updateRecipe, getRecipesByCategory };
+export {
+  getAllRecipes,
+  addRecipe,
+  imageRecipeUpload,
+  updateRecipe,
+  getRecipesByCategory,
+};
