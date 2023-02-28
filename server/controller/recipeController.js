@@ -17,6 +17,28 @@ const getAllRecipes = async (req, res) => {
   }
 };
 
+const getRecipesByCategory = async(req, res) => {
+  console.log("req>>>", req.category);
+  const { category } = req.params;
+  try { 
+    const requestedRecipes = await recipeModel.find({category: category});
+    if (requestedRecipes.length === 0) {
+      res.status(200).json({
+        msg: "No recipes with that category code in our DB",
+      });
+    } else {
+      res.status(200).json({
+        number: requestedRecipes.length,
+        requestedRecipes,
+      });
+    }
+  } catch(error){
+    res. status (500).json({
+      msg: "Something went wrong"
+    })
+  }
+};
+
 const imageRecipeUpload = async (req, res) => {
   console.log("req>>>", req.file);
   try {
@@ -63,19 +85,19 @@ const addRecipe = async (req, res) => {
 };
 
 const updateRecipe = async (req, res) => {
-  
-
+  console.log("req.body>> ", req.body);
   try {
     const postUpdateRecipe = recipeModel.findById(req.params.id);
-      if (postUpdateRecipe.userId===req.body.userId)
-      {
-        await postUpdateRecipe.updateOne({$set:req.body});
-          return res.status(200).json("Recipe has been updated")
-      }
-      else{
-        return res.status(400).json("You can only update your post");
-      }
-  } catch (error) {}
+    console.log("postUpdateRecipe", postUpdateRecipe);
+    if (postUpdateRecipe.userId === req.body.userId) {
+      await postUpdateRecipe.updateOne({ $set: req.body });
+      return res.status(200).json("Recipe has been updated");
+    } else {
+      return res.status(400).json("You can only update your post");
+    }
+  } catch (error) {
+    return res.status(500).json(error);
+  }
 };
 
-export { getAllRecipes, addRecipe, imageRecipeUpload, updateRecipe };
+export { getAllRecipes, addRecipe, imageRecipeUpload, updateRecipe, getRecipesByCategory };
