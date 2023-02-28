@@ -3,7 +3,8 @@ import { v2 as cloudinary } from "cloudinary";
 
 const getAllRecipes = async (req, res) => {
   try {
-    const allRecipes = await recipeModel.find({}).populate("postedBy");
+    const allRecipes = await recipeModel.find({});
+    //.populate("postedBy");
     console.log("allRecipes", allRecipes);
     res.status(200).json({
       number: allRecipes.length,
@@ -14,6 +15,27 @@ const getAllRecipes = async (req, res) => {
       error,
       msg: "Something went wrong in the server",
     });
+  }
+};
+
+const getRecipeById = async (req, res) => {
+  console.log("req>>>", req);
+  const { id } = req.params;
+
+  try {
+    const recipeById = await recipeModel.find({ _id: id });
+    if (recipeById.length === 0) {
+      res.status(200).json({
+        msg: "No recipe with that id in our DB",
+      });
+    } else {
+      res.status(200).json({
+        number: recipeById.length,
+        recipeById,
+      });
+    }
+  } catch (error) {
+    res.status(500).json({ msg: "Something went wrong" });
   }
 };
 
@@ -107,4 +129,5 @@ export {
   imageRecipeUpload,
   updateRecipe,
   getRecipesByCategory,
+  getRecipeById,
 };
