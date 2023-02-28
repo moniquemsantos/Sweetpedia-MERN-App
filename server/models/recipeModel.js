@@ -37,6 +37,7 @@ const recipeSchema = new mongoose.Schema({
     // required: true,
     // unique: true,
   },
+  postedBy: [{ type: mongoose.Schema.Types.ObjectId, ref: "users" }],
 });
 
 const recipeModel = mongoose.model("recipe", recipeSchema);

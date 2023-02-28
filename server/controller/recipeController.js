@@ -3,7 +3,7 @@ import { v2 as cloudinary } from "cloudinary";
 
 const getAllRecipes = async (req, res) => {
   try {
-    const allRecipes = await recipeModel.find({});
+    const allRecipes = await recipeModel.find({}).populate("postedBy");
     console.log("allRecipes", allRecipes);
     res.status(200).json({
       number: allRecipes.length,
