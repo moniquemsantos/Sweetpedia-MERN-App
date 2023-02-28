@@ -5,6 +5,7 @@ import {
   imageRecipeUpload,
   updateRecipe,
   getRecipesByCategory,
+  getRecipeById,
 } from "../controller/recipeController.js";
 import jwt from "../middlewares/jwt.js";
 import { multerUpload } from "../middlewares/multer.js";
@@ -12,6 +13,7 @@ import { multerUpload } from "../middlewares/multer.js";
 const router = express.Router();
 
 router.get("/all", getAllRecipes);
+router.get("/:id", getRecipeById);
 router.get("/:category", getRecipesByCategory); 
 router.post("/addrecipe", addRecipe);
 router.post(
