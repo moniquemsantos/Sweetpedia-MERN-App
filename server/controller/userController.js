@@ -3,6 +3,39 @@ import userModel from "../models/userModel.js";
 import { passwordEncryption, verifyPassword } from "../utils/bcrypt.js";
 import generateToken from "../utils/jwt.js";
 
+const getAllUsers = async (req, res) => {
+  try {
+    const allUsers = await userModel.find({});
+    if (allUsers.length === 0) {
+      return req.status(201).json({ msg: "No users" });
+    }
+    return res.status(200).json(allUsers);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+const getUserById = async (req, res) => {
+  console.log("req>>>", req);
+  const { id } = req.params;
+
+  try {
+    const requestedUser = await userModel.find({ _id: id });
+    if (requestedUser.length === 0) {
+      res.status(200).json({
+        msg: "No user with that id in our DB",
+      });
+    } else {
+      res.status(200).json({
+        number: requestedUser.length,
+        requestedUser,
+      });
+    }
+  } catch (error) {
+    res.status(500).json({ msg: "Something went wrong" });
+  }
+};
+
 const imageUpload = async (req, res) => {
   console.log(req.file);
 
@@ -111,4 +144,4 @@ const getProfile = async (req, res) => {
     },
   });
 };
-export { imageUpload, signup, login, getProfile };
+export { imageUpload, signup, login, getProfile, getAllUsers, getUserById };
