@@ -3,8 +3,10 @@ import { v2 as cloudinary } from "cloudinary";
 
 const getAllRecipes = async (req, res) => {
   try {
-    const allRecipes = await recipeModel.find({});
-    //.populate("postedBy");
+    const allRecipes = await recipeModel
+      .find({})
+      .populate({ path: "postedBy", select: ["userName", "userPicture"] });
+
     console.log("allRecipes", allRecipes);
     res.status(200).json({
       number: allRecipes.length,
@@ -18,29 +20,8 @@ const getAllRecipes = async (req, res) => {
   }
 };
 
-const getRecipeById = async (req, res) => {
-  console.log("req>>>", req);
-  const { id } = req.params;
-
-  try {
-    const recipeById = await recipeModel.find({ _id: id });
-    if (recipeById.length === 0) {
-      res.status(200).json({
-        msg: "No recipe with that id in our DB",
-      });
-    } else {
-      res.status(200).json({
-        number: recipeById.length,
-        recipeById,
-      });
-    }
-  } catch (error) {
-    res.status(500).json({ msg: "Something went wrong" });
-  }
-};
-
 const getRecipesByCategory = async (req, res) => {
-  console.log("req>>>", req);
+  //console.log("req>>>", req);
   const { category } = req.params;
 
   try {
@@ -59,6 +40,29 @@ const getRecipesByCategory = async (req, res) => {
     res.status(500).json({
       msg: "Something went wrong",
     });
+  }
+};
+
+const getRecipeById = async (req, res) => {
+  console.log("req>>>", req);
+  const { id } = req.params;
+
+  try {
+    const recipeById = await recipeModel
+      .find({ _id: id })
+      .populate({ path: "postedBy", select: ["userName", "userPicture"] });
+    if (recipeById.length === 0) {
+      res.status(200).json({
+        msg: "No recipe with that id in our DB",
+      });
+    } else {
+      res.status(200).json({
+        number: recipeById.length,
+        recipeById,
+      });
+    }
+  } catch (error) {
+    res.status(500).json({ msg: "Something went wrong" });
   }
 };
 
@@ -128,6 +132,6 @@ export {
   addRecipe,
   imageRecipeUpload,
   updateRecipe,
-  getRecipesByCategory,
   getRecipeById,
+  getRecipesByCategory,
 };

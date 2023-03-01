@@ -5,7 +5,7 @@ import generateToken from "../utils/jwt.js";
 
 const getAllUsers = async (req, res) => {
   try {
-    const allUsers = await userModel.find({}).populate("postedRecipe");
+    const allUsers = await userModel.find({});
     if (allUsers.length === 0) {
       return req.status(201).json({ msg: "No users" });
     }
@@ -145,3 +145,4 @@ const getProfile = async (req, res) => {
   });
 };
 export { imageUpload, signup, login, getProfile, getAllUsers, getUserById };
+ 
