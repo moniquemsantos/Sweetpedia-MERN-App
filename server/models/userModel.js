@@ -17,7 +17,6 @@ const userSchema = new mongoose.Schema({
   userPicture: {
     type: String,
   },
-  postedRecipe:[{type: mongoose.Schema.Types.ObjectId, ref:"user"}],
 });
 
 const userModel = mongoose.model("user", userSchema);
