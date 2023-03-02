@@ -6,6 +6,7 @@ import {
   updateRecipe,
   getRecipeById,
   getRecipesByCategory,
+  deleteRecipe,
 } from "../controller/recipeController.js";
 import jwt from "../middlewares/jwt.js";
 import { multerUpload } from "../middlewares/multer.js";
@@ -16,6 +17,7 @@ router.get("/all", getAllRecipes);
 router.get("/recipe/:id", getRecipeById);
 router.get("/:category", getRecipesByCategory);
 router.post("/addrecipe", addRecipe);
+router.delete("/delete-recipe/:id", deleteRecipe);
 router.post(
   "/image-recipe-upload",
   multerUpload.single("image"),
