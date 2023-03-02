@@ -1,10 +1,42 @@
 import { useState } from "react";
 import { RecipeContainer } from "../styles/addRecipe";
 import ProfileNavegation from "./ProfileNavegation";
+import { getToken } from "../utils/getToken";
 
 function NewRecipe() {
   const [selectFile, setSelectFile] = useState(null);
   const [newRecipe, setNewRecipe] = useState({});
+
+  const handleInputChange = (e) => {
+    setNewRecipe({ ...newRecipe, [e.target.name]: e.target.value });
+  };
+
+  const addNewRecipe = async () => {
+    const token = getToken();
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+    myHeaders.append("Authorization", `Bearer ${token}`);
+
+    const urlencoded = new URLSearchParams();
+    urlencoded.append("title", newRecipe.title);
+    urlencoded.append("category", newRecipe.category);
+    urlencoded.append("ingredients", newRecipe.ingredients);
+    urlencoded.append("instructions", newRecipe.instructions);
+    urlencoded.append("readyIn", newRecipe.readyIn);
+    urlencoded.append("image", newRecipe.recipePicture);
+
+    var requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: urlencoded,
+      redirect: "follow",
+    };
+
+    fetch("http://localhost:5000/api/recipes/addrecipe", requestOptions)
+      .then((response) => response.json())
+      .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));
+  };
 
   const handleAttachRecipePicture = (e) => {
     setSelectFile(e.target.files[0]);
@@ -32,99 +64,65 @@ function NewRecipe() {
       .catch((error) => console.log("error", error));
   };
 
-  const handleInputChange = (e) => {
-    setNewRecipe({ ...newRecipe, [e.target.name]: e.target.value });
-    console.log("e.target.name, e.target.value", e.target.name, e.target.value);
-  };
-
-  const addNewRecipe = async () => {
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
-
-    const urlencoded = new URLSearchParams();
-    urlencoded.append("title", newRecipe.title);
-    urlencoded.append("category", newRecipe.category);
-    urlencoded.append("ingredients", newRecipe.ingredients);
-    urlencoded.append(
-      "instructions",
-
-      newRecipe.instructions
-    );
-    urlencoded.append("readyIn", newRecipe.readyIn);
-    urlencoded.append("image", newRecipe.recipePicture);
-
-    var requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: urlencoded,
-      redirect: "follow",
-    };
-
-    fetch("http://localhost:5000/api/recipes/addrecipe", requestOptions)
-      .then((response) => response.json())
-      .then((result) => console.log(result))
-      .catch((error) => console.log("error", error));
-  };
-
   return (
     <>
-    <ProfileNavegation/>
-    <div>
-      <h1>Submit New Recipe</h1>
+      <ProfileNavegation />
       <div>
-        <RecipeContainer>
+        <h1>Submit New Recipe</h1>
+        <div>
+          <RecipeContainer>
+            <input
+              type="text"
+              name="title"
+              id="title"
+              onChange={handleInputChange}
+            ></input>
+            <label htmlFor="title">Title</label>
+            <input
+              type="text"
+              name="category"
+              id="category"
+              onChange={handleInputChange}
+            ></input>
+            <label htmlFor="category">Category</label>
+            <input
+              type="text"
+              name="ingredients"
+              id="ingredients"
+              onChange={handleInputChange}
+            ></input>
+            <label htmlFor="ingredients">Ingredients</label>
+            <input
+              type="text"
+              name="instructions"
+              id="instructions"
+              onChange={handleInputChange}
+            ></input>
+            <label htmlFor="instructions">Instructions</label>
+            <input
+              type="text"
+              name="readyIn"
+              id="readyIn"
+              onChange={handleInputChange}
+            ></input>
+            <label htmlFor="readyIn">Ready In</label>
+            <button onClick={addNewRecipe}>Submit Recipe</button>
+          </RecipeContainer>
+        </div>
+        <form>
           <input
-            type="text"
-            name="title"
-            id="title"
-            onChange={handleInputChange}
+            type="file"
+            name="file"
+            onChange={handleAttachRecipePicture}
           ></input>
-          <label htmlFor="title">Title</label>
-          <input
-            type="text"
-            name="category"
-            id="category"
-            onChange={handleInputChange}
-          ></input>
-          <label htmlFor="category">Category</label>
-          <input
-            type="text"
-            name="ingredients"
-            id="ingredients"
-            onChange={handleInputChange}
-          ></input>
-          <label htmlFor="ingredients">Ingredients</label>
-          <input
-            type="text"
-            name="instructions"
-            id="instructions"
-            onChange={handleInputChange}
-          ></input>
-          <label htmlFor="instructions">Instructions</label>
-          <input
-            type="text"
-            name="readyIn"
-            id="readyIn"
-            onChange={handleInputChange}
-          ></input>
-          <label htmlFor="readyIn">Ready In</label>
-          <button onClick={addNewRecipe}>Submit Recipe</button>
-        </RecipeContainer>
+          <button onClick={submitRecipePicture}>upload</button>
+        </form>
+        <div>
+          {newRecipe && (
+            <img src={newRecipe.recipePicture} alt="" width={"500px"} />
+          )}
+        </div>
       </div>
-      <form>
-        <input
-          type="file"
-          name="file"
-          onChange={handleAttachRecipePicture}
-        ></input>
-        <button onClick={submitRecipePicture}>upload</button>
-      </form>
-      <div>
-        {newRecipe && (
-          <img src={newRecipe.recipePicture} alt="" width={"500px"} />
-        )}
-      </div>
-    </div>
     </>
   );
 }

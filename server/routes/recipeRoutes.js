@@ -16,7 +16,7 @@ const router = express.Router();
 router.get("/all", getAllRecipes);
 router.get("/recipe/:id", getRecipeById);
 router.get("/:category", getRecipesByCategory);
-router.post("/addrecipe", addRecipe);
+router.post("/addrecipe", jwt, addRecipe);
 router.delete("/delete-recipe/:id", deleteRecipe);
 router.post(
   "/image-recipe-upload",
