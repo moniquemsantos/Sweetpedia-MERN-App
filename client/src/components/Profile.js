@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import AppBar from "../components/AppBar";
-import Footer from "../components/Footer";
 import { getToken } from "../utils/getToken";
+import ProfileNavegation from "./ProfileNavegation";
 
 const Profile = () => {
   const [userProfile, setUserProfile] = useState(null);
@@ -37,9 +36,12 @@ const Profile = () => {
     getProfile();
     // eslint-disable-next-line
   }, []);
+
   return (
     <>
-      <AppBar />
+      <div>
+        <ProfileNavegation />
+      </div>
       <h1> Welcome {userProfile?.userName}</h1>
 
       {userProfile && (
@@ -52,7 +54,6 @@ const Profile = () => {
       <h2> User Details </h2>
       <p>Email: {userProfile?.email}</p>
       <p>Username:{userProfile?.userName}</p>
-      <Footer />
     </>
   );
 };
