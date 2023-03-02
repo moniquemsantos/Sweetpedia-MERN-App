@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { RecipeContainer } from "../styles/addRecipe";
+import ProfileNavegation from "./ProfileNavegation";
 
 function NewRecipe() {
   const [selectFile, setSelectFile] = useState(null);
@@ -66,6 +67,8 @@ function NewRecipe() {
   };
 
   return (
+    <>
+    <ProfileNavegation/>
     <div>
       <h1>Submit New Recipe</h1>
       <div>
@@ -122,6 +125,7 @@ function NewRecipe() {
         )}
       </div>
     </div>
+    </>
   );
 }
 

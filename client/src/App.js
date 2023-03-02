@@ -7,10 +7,10 @@ import theme from "./styles/theme";
 import HomePage from "./views/Home";
 import SignUp from "./views/SignUp";
 import Login from "./views/Login";
-import Profile from "./views/Profile";
 import { RecipesContextProvider } from "./store/RecipesContext";
 import { AuthContextProvider } from "./store/AuthContext";
-import NewRecipe from "./views/NewRecipe";
+import AddRecipe from "./views/AddRecipe";
+import MyAccount from "./views/MyAccount";
 
 function App() {
   useEffect(() => {
@@ -31,8 +31,8 @@ function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="login" element={<Login />} />
               <Route path="signup" element={<SignUp />} />
-              <Route path="profile" element={<Profile />} />
-              <Route path="addRecipe" element={<NewRecipe />} />
+              <Route path="myaccount" element={<MyAccount />} />
+              <Route path="addRecipe" element={<AddRecipe />} />
             </Routes>
           </RecipesContextProvider>
         </AuthContextProvider>
