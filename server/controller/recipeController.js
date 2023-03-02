@@ -111,6 +111,23 @@ const addRecipe = async (req, res) => {
   }
 };
 
+const deleteRecipe = async (req, res) => {
+  console.log("req>>>>", req);
+  const recipeId = req.params.id;
+  console.log(recipeId);
+  try {
+    const recipe = await recipeModel.findOne({ _id: recipeId });
+    if (!recipe) {
+      return res.status(404).json({ msg: "The recipe was not found" });
+    }
+    await recipeModel.findByIdAndDelete({ _id: recipeId });
+    res.status(200).json({ msg: "Your recipe was deleted" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ msg: "Something went wrong" });
+  }
+};
+
 const updateRecipe = async (req, res) => {
   console.log("req.body>> ", req.body);
   try {
@@ -130,6 +147,7 @@ const updateRecipe = async (req, res) => {
 export {
   getAllRecipes,
   addRecipe,
+  deleteRecipe,
   imageRecipeUpload,
   updateRecipe,
   getRecipeById,

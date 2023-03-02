@@ -32,7 +32,7 @@ function App() {
               <Route path="login" element={<Login />} />
               <Route path="signup" element={<SignUp />} />
               <Route path="profile" element={<Profile />} />
-              <Route path="addRecipe" element={<NewRecipe/>} />
+              <Route path="addRecipe" element={<NewRecipe />} />
             </Routes>
           </RecipesContextProvider>
         </AuthContextProvider>
