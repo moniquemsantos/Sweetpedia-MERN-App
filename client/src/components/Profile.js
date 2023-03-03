@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getToken } from "../utils/getToken";
-import ProfileNavegation from "./ProfileNavegation";
+import { Grid, Typography } from "@mui/material";
 
 const Profile = () => {
   const [userProfile, setUserProfile] = useState(null);
@@ -39,21 +39,32 @@ const Profile = () => {
 
   return (
     <>
-      <div>
-        <ProfileNavegation />
-      </div>
-      <h1> Welcome {userProfile?.userName}</h1>
+      <Grid>
+        <Typography component={"span"} variant={"body2"}>
+          {" "}
+          Welcome {userProfile?.userName}
+        </Typography>
 
-      {userProfile && (
-        <img
-          src={userProfile.userPicture}
-          alt="Avatar"
-          style={{ width: "152px" }}
-        ></img>
-      )}
-      <h2> User Details </h2>
-      <p>Email: {userProfile?.email}</p>
-      <p>Username:{userProfile?.userName}</p>
+        <Typography component={"span"} variant={"body1"}>
+          {" "}
+          User Details{" "}
+        </Typography>
+        <Typography component={"span"} variant={"body2"}>
+          Email: {userProfile?.email}
+        </Typography>
+        <Typography component={"span"} variant={"body2"}>
+          Username:{userProfile?.userName}
+        </Typography>
+      </Grid>
+      <Grid>
+        {userProfile && (
+          <img
+            src={userProfile.userPicture}
+            alt="Avatar"
+            style={{ width: "152px" }}
+          ></img>
+        )}
+      </Grid>
     </>
   );
 };

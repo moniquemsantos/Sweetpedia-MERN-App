@@ -16,6 +16,7 @@ export const AvatarStyle = styled(Avatar)(() => ({
 export const BtnStyle = styled(Button)(() => ({
   margin: "8px 0",
   backgroundColor: Colors.primary,
+  color: "white"
 }));
 
 export const LinkStyle = {
