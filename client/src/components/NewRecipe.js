@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { RecipeContainer } from "../styles/addRecipe";
-import ProfileNavegation from "./ProfileNavegation";
 import { getToken } from "../utils/getToken";
+import { BtnStyle } from "../styles/submitRecipeForm";
+import { Grid, TextField, Typography } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import PhotoCamera from "@mui/icons-material/PhotoCamera";
 
-function NewRecipe() {
+const SubmitRecipeForm = () => {
   const [selectFile, setSelectFile] = useState(null);
   const [newRecipe, setNewRecipe] = useState({});
 
@@ -66,65 +68,99 @@ function NewRecipe() {
 
   return (
     <>
-      <ProfileNavegation />
-      <div>
-        <h1>Submit New Recipe</h1>
-        <div>
-          <RecipeContainer>
-            <input
-              type="text"
-              name="title"
-              id="title"
-              onChange={handleInputChange}
-            ></input>
-            <label htmlFor="title">Title</label>
-            <input
-              type="text"
-              name="category"
-              id="category"
-              onChange={handleInputChange}
-            ></input>
-            <label htmlFor="category">Category</label>
-            <input
-              type="text"
-              name="ingredients"
-              id="ingredients"
-              onChange={handleInputChange}
-            ></input>
-            <label htmlFor="ingredients">Ingredients</label>
-            <input
-              type="text"
-              name="instructions"
-              id="instructions"
-              onChange={handleInputChange}
-            ></input>
-            <label htmlFor="instructions">Instructions</label>
-            <input
-              type="text"
-              name="readyIn"
-              id="readyIn"
-              onChange={handleInputChange}
-            ></input>
-            <label htmlFor="readyIn">Ready In</label>
-            <button onClick={addNewRecipe}>Submit Recipe</button>
-          </RecipeContainer>
-        </div>
-        <form>
-          <input
-            type="file"
-            name="file"
-            onChange={handleAttachRecipePicture}
-          ></input>
-          <button onClick={submitRecipePicture}>upload</button>
-        </form>
-        <div>
-          {newRecipe && (
-            <img src={newRecipe.recipePicture} alt="" width={"500px"} />
-          )}
-        </div>
-      </div>
+      <Typography component={"span"} variant={"body2"}>
+        New Recipe
+      </Typography>
+
+      <Grid>
+        <TextField
+          required
+          variant="outlined"
+          label="Tittle"
+          type="text"
+          name="title"
+          id="title"
+          margin="normal"
+          fullWidth
+          onChange={handleInputChange}
+        />
+
+        <TextField
+          required
+          variant="outlined"
+          type="text"
+          label="Category"
+          name="category"
+          id="category"
+          fullWidth
+          margin="normal"
+          onChange={handleInputChange}
+        />
+
+        <TextField
+          required
+          variant="outlined"
+          label="Ingredients"
+          type="text"
+          name="ingredients"
+          id="ingredients"
+          fullWidth
+          margin="normal"
+          onChange={handleInputChange}
+        />
+
+        <TextField
+          required
+          variant="outlined"
+          label="Instructions"
+          type="text"
+          name="instructions"
+          id="instructions"
+          fullWidth
+          margin="normal"
+          onChange={handleInputChange}
+        />
+
+        <TextField
+          required
+          variant="outlined"
+          label="Ready In"
+          type="text"
+          name="readyIn"
+          id="readyIn"
+          fullWidth
+          margin="normal"
+          onChange={handleInputChange}
+        />
+      </Grid>
+
+      <form>
+        <input
+          type="file"
+          name="file"
+          onChange={handleAttachRecipePicture}
+        ></input>
+        <IconButton
+          color="primary"
+          aria-label="upload picture"
+          component="label"
+          onClick={submitRecipePicture}
+        >
+          <PhotoCamera />
+        </IconButton>
+      </form>
+
+      <BtnStyle onClick={addNewRecipe} type="submit" variant="contained">
+        Submit Recipe
+      </BtnStyle>
+
+      {/* <div>
+        {newRecipe && (
+          <img src={newRecipe.recipePicture} alt="" width={"500px"} />
+        )}
+      </div> */}
     </>
   );
-}
+};
 
-export default NewRecipe;
+export default SubmitRecipeForm;

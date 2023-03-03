@@ -19,7 +19,7 @@ const pages = [
   { label: "Quick and easy", url: "/#" },
 ];
 
-const settings = [{ label: "Profile", url: "/myaccount" }];
+const settings = [{ label: "Profile", url: "/profilecontainer" }];
 
 function AppBar() {
   // TODO Extract this styles to styles folder
