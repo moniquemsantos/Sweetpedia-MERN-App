@@ -12,7 +12,7 @@ import { AuthContextProvider } from "./store/AuthContext";
 import MyAccount from "./views/MyAccount";
 import MyRecipes from "./views/MyRecipes";
 import FormSubmitRecipe from "./views/SubmitRecipe";
-import ProfileContainer from "./views/MyProfile";
+import MyProfile from "./views/MyProfile";
 
 function App() {
   useEffect(() => {
@@ -36,7 +36,7 @@ function App() {
               <Route path="myaccount" element={<MyAccount />} />
               <Route path="myrecipes" element={<MyRecipes />} />
               <Route path="formrecipe" element={<FormSubmitRecipe />} />
-              <Route path="profilecontainer" element={<ProfileContainer />} />
+              <Route path="myprofile" element={<MyProfile />} />
             </Routes>
           </RecipesContextProvider>
         </AuthContextProvider>
