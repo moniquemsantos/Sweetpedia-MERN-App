@@ -1,15 +1,9 @@
 import styled from "@emotion/styled";
-import { Container } from "@mui/system";
+import { Button } from "@mui/material";
+import { Colors } from "../theme";
 
-//recipeContainer
-export const RecipeContainer = styled(Container)(() => ({
-  backgroundColor: "white",
-  border: "solid 1px rgba(0,0,0,0.3)",
-  padding: "0.5em 1em",
-  display: "flex",
-  flexDirection: "row",
-  alignItens: "center",
-  justifyContent: "space - between",
-  gap: "0.5em",
-  marginBottom: "0.5em",
+export const BtnStyle = styled(Button)(() => ({
+  margin: "8px 0",
+  backgroundColor: Colors.primary,
+  color: "white",
 }));

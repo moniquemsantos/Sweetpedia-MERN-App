@@ -9,7 +9,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const Recipe = ({ recipe }) => {
   return (
-    <Card sx={{ maxWidth: 345 }} >
+    <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
         <CardMedia
           height="140"
@@ -17,6 +17,7 @@ const Recipe = ({ recipe }) => {
           image={recipe.image}
           alt="dessert"
         />
+        <a href={`recipeDetails/${recipe._id}`}>Test</a>
 
         <CardContent>
           <Typography key={recipe.id} gutterBottom variant="h5" component="div">
@@ -29,9 +30,9 @@ const Recipe = ({ recipe }) => {
         </CardContent>
       </CardActionArea>
       <CardActions>
-      <IconButton aria-label="add to favorites">
-        <FavoriteIcon />
-      </IconButton>
+        <IconButton aria-label="add to favorites">
+          <FavoriteIcon />
+        </IconButton>
       </CardActions>
     </Card>
   );

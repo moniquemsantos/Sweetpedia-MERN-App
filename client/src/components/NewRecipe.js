@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { getToken } from "../utils/getToken";
-import { BtnStyle } from "../styles/submitRecipeForm";
+import { BtnStyle } from "../styles/addRecipe";
 import { Grid, TextField, Typography } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
@@ -100,6 +100,7 @@ const SubmitRecipeForm = () => {
         <TextField
           required
           variant="outlined"
+          multiline
           label="Ingredients"
           type="text"
           name="ingredients"

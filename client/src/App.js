@@ -9,10 +9,10 @@ import SignUp from "./views/SignUp";
 import Login from "./views/Login";
 import { RecipesContextProvider } from "./store/RecipesContext";
 import { AuthContextProvider } from "./store/AuthContext";
-import MyAccount from "./views/MyAccount";
 import MyRecipes from "./views/MyRecipes";
 import FormSubmitRecipe from "./views/SubmitRecipe";
 import MyProfile from "./views/MyProfile";
+import RecipeDetails from "./views/RecipeDetails";
 
 function App() {
   useEffect(() => {
@@ -33,10 +33,10 @@ function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="login" element={<Login />} />
               <Route path="signup" element={<SignUp />} />
-              <Route path="myaccount" element={<MyAccount />} />
+              <Route path="myprofile" element={<MyProfile />} />
               <Route path="myrecipes" element={<MyRecipes />} />
               <Route path="formrecipe" element={<FormSubmitRecipe />} />
-              <Route path="myprofile" element={<MyProfile />} />
+              <Route path="recipedetails/:id" element={<RecipeDetails />} />
             </Routes>
           </RecipesContextProvider>
         </AuthContextProvider>

@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Tabs, Tab, Box, Typography } from "@mui/material";
 import Profile from "../components/Profile";
 import NewRecipe from "../components/NewRecipe";
-import { PaperProfile } from "../styles/myProfile";
 import AppBar from "../components/AppBar";
 import Footer from "../components/Footer";
+import { MainPaper } from "../styles/mainPaper";
 
 const MyProfile = () => {
   const [value, setValue] = useState(0);
@@ -33,14 +33,14 @@ const MyProfile = () => {
   return (
     <>
       <AppBar />
-      <PaperProfile>
+      <MainPaper>
         <Tabs
           centered
           value={value}
           onChange={handleChange}
           aria-label="disabled tabs example"
         >
-          <Tab label="My Account" />
+          <Tab label="My Profile" />
           <Tab label="My Recipes" />
           <Tab label="New Recipe" />
         </Tabs>
@@ -53,7 +53,7 @@ const MyProfile = () => {
         <TabPanel value={value} index={2}>
           <NewRecipe />
         </TabPanel>
-      </PaperProfile>
+      </MainPaper>
       <Footer />
     </>
   );
