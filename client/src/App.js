@@ -9,6 +9,7 @@ import SignUp from "./views/SignUp";
 import Login from "./views/Login";
 import { RecipesContextProvider } from "./store/RecipesContext";
 import { AuthContextProvider } from "./store/AuthContext";
+import ProtectedRoute from "./routes/ProtectedRoute";
 import MyRecipes from "./views/MyRecipes";
 import FormSubmitRecipe from "./views/SubmitRecipe";
 import MyProfile from "./views/MyProfile";
@@ -33,9 +34,30 @@ function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="login" element={<Login />} />
               <Route path="signup" element={<SignUp />} />
-              <Route path="myprofile" element={<MyProfile />} />
-              <Route path="myrecipes" element={<MyRecipes />} />
-              <Route path="formrecipe" element={<FormSubmitRecipe />} />
+              <Route
+                path="myprofile"
+                element={
+                  <ProtectedRoute>
+                    <MyProfile />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="myrecipes"
+                element={
+                  <ProtectedRoute>
+                    <MyRecipes />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="formrecipe"
+                element={
+                  <ProtectedRoute>
+                    <FormSubmitRecipe />
+                  </ProtectedRoute>
+                }
+              />
               <Route path="recipedetails/:id" element={<RecipeDetails />} />
             </Routes>
           </RecipesContextProvider>

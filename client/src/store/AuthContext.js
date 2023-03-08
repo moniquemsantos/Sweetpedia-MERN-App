@@ -5,7 +5,7 @@ import { getToken } from "../utils/getToken";
 export const AuthContext = createContext();
 
 export const AuthContextProvider = (props) => {
-  const [loginUser, setLoginUser] = useState({});
+  const [loginUser, setLoginUser] = useState(null);
 
   const handleInputChange = (e) => {
     setLoginUser({ ...loginUser, [e.target.name]: e.target.value });
