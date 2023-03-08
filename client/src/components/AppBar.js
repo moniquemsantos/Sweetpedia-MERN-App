@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../store/AuthContext";
 import {
@@ -18,6 +18,7 @@ import { Button } from "@mui/material";
 import Tooltip from "@mui/material/Tooltip";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
+import { RecipesContext } from "../store/RecipesContext";
 
 const pages = [
   { label: "Home", url: "/" },
@@ -28,6 +29,8 @@ const pages = [
 const settings = [{ label: "Profile", url: "/myprofile" }];
 
 function AppBar() {
+  const { searchRecipes } = useContext(RecipesContext);
+  const searchInputRef = useRef();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -50,6 +53,13 @@ function AppBar() {
   let isLogged = true;
 
   const { logout } = useContext(AuthContext);
+
+  const handleSearchSubmission = (evt) => {
+    evt.preventDefault();
+    const searchQuery = searchInputRef.current.value;
+    searchRecipes(searchQuery);
+    console.log(searchQuery);
+  };
 
   return (
     <>
@@ -115,15 +125,18 @@ function AppBar() {
           <div
             style={{ height: "100%", display: "flex", alignItems: "center" }}
           >
-            <Search>
-              <SearchIconWrapper>
-                <SearchIcon />
-              </SearchIconWrapper>
-              <StyledInputBase
-                placeholder="Search…"
-                inputProps={{ "aria-label": "search" }}
-              />
-            </Search>
+            <form onSubmit={handleSearchSubmission}>
+              <Search>
+                <SearchIconWrapper>
+                  <SearchIcon />
+                </SearchIconWrapper>
+                <StyledInputBase
+                  placeholder="Search…"
+                  inputProps={{ "aria-label": "search" }}
+                  inputRef={searchInputRef}
+                />
+              </Search>
+            </form>
           </div>
         </Box>
 
