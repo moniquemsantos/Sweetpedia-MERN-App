@@ -18,12 +18,12 @@ function Details({ recipe, formattedIngredients = "" }) {
         Ingredients
       </Typography>
 
-      {formattedIngredients?.map((line) => (
-        <Typography>{line}</Typography>
+      {formattedIngredients?.map((line, index) => (
+        <Typography key={line + index}>{line}</Typography>
       ))}
 
       <Divider variant="middle" style={{ margin: "20px 0 10px 0px" }} />
-      
+
       <Typography variant="h5" gutterBottom>
         Instructions
       </Typography>
