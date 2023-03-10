@@ -69,10 +69,9 @@ const SubmitRecipeForm = () => {
 
   return (
     <>
-      <Typography component={"span"}>New Recipe</Typography>
+      <Typography variant={"span"}>New Recipe</Typography>
 
       <TextField
-        component={"span"}
         required
         variant="outlined"
         label="Tittle"
@@ -85,7 +84,6 @@ const SubmitRecipeForm = () => {
       />
 
       <TextField
-        component={"span"}
         required
         variant="outlined"
         type="text"
@@ -98,7 +96,6 @@ const SubmitRecipeForm = () => {
       />
 
       <TextField
-        component={"span"}
         required
         variant="outlined"
         multiline
@@ -112,7 +109,6 @@ const SubmitRecipeForm = () => {
       />
 
       <TextField
-        component={"span"}
         required
         variant="outlined"
         label="Instructions"
@@ -125,7 +121,6 @@ const SubmitRecipeForm = () => {
       />
 
       <TextField
-        component={"span"}
         required
         variant="outlined"
         label="Ready In"
@@ -137,21 +132,20 @@ const SubmitRecipeForm = () => {
         onChange={handleInputChange}
       />
 
-      <form>
-        <input
-          type="file"
-          name="file"
-          onChange={handleAttachRecipePicture}
-        ></input>
-        <IconButton
-          color="primary"
-          aria-label="upload picture"
-          component="label"
-          onClick={submitRecipePicture}
-        >
-          <PhotoCamera />
-        </IconButton>
-      </form>
+      <TextField
+        type="file"
+        name="file"
+        onChange={handleAttachRecipePicture}
+      ></TextField>
+
+      <IconButton
+        color="primary"
+        aria-label="upload picture"
+        component="label"
+        onClick={submitRecipePicture}
+      >
+        <PhotoCamera />
+      </IconButton>
 
       <BtnStyle onClick={addNewRecipe} type="submit" variant="contained">
         Submit Recipe

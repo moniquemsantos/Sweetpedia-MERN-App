@@ -72,6 +72,6 @@ const Profile = () => {
       </Typography>
     </>
   );
-}; 
+};
 
 export default Profile;
