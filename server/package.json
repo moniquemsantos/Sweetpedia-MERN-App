@@ -2,11 +2,12 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "nodemon server.js",
-    "bothServers": "concurrently \"nodemon server.js\" \"cd ../client && npm start\""
+    "start": "nodemon index.js",
+    "bothServers": "concurrently \"nodemon index.js\" \"cd ../client && npm start\""
+    
   },
   "type": "module",
   "author": "Monique Santos",

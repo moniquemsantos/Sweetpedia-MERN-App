@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { getToken } from "../utils/getToken";
 import { BtnStyle } from "../styles/addRecipe";
-import { Grid, TextField, Typography } from "@mui/material";
+import { TextField, Typography } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 
@@ -68,70 +68,73 @@ const SubmitRecipeForm = () => {
 
   return (
     <>
-      <Typography component={"div"}>New Recipe</Typography>
+      <Typography component={"span"}>New Recipe</Typography>
 
-      <Grid>
-        <TextField
-          required
-          variant="outlined"
-          label="Tittle"
-          type="text"
-          name="title"
-          id="title"
-          margin="normal"
-          fullWidth
-          onChange={handleInputChange}
-        />
+      <TextField
+        component={"span"}
+        required
+        variant="outlined"
+        label="Tittle"
+        type="text"
+        name="title"
+        id="title"
+        margin="normal"
+        fullWidth
+        onChange={handleInputChange}
+      />
 
-        <TextField
-          required
-          variant="outlined"
-          type="text"
-          label="Category"
-          name="category"
-          id="category"
-          fullWidth
-          margin="normal"
-          onChange={handleInputChange}
-        />
+      <TextField
+        component={"span"}
+        required
+        variant="outlined"
+        type="text"
+        label="Category"
+        name="category"
+        id="category"
+        fullWidth
+        margin="normal"
+        onChange={handleInputChange}
+      />
 
-        <TextField
-          required
-          variant="outlined"
-          multiline
-          label="Ingredients"
-          type="text"
-          name="ingredients"
-          id="ingredients"
-          fullWidth
-          margin="normal"
-          onChange={handleInputChange}
-        />
+      <TextField
+        component={"span"}
+        required
+        variant="outlined"
+        multiline
+        label="Ingredients"
+        type="text"
+        name="ingredients"
+        id="ingredients"
+        fullWidth
+        margin="normal"
+        onChange={handleInputChange}
+      />
 
-        <TextField
-          required
-          variant="outlined"
-          label="Instructions"
-          type="text"
-          name="instructions"
-          id="instructions"
-          fullWidth
-          margin="normal"
-          onChange={handleInputChange}
-        />
+      <TextField
+        component={"span"}
+        required
+        variant="outlined"
+        label="Instructions"
+        type="text"
+        name="instructions"
+        id="instructions"
+        fullWidth
+        margin="normal"
+        onChange={handleInputChange}
+      />
 
-        <TextField
-          required
-          variant="outlined"
-          label="Ready In"
-          type="text"
-          name="readyIn"
-          id="readyIn"
-          fullWidth
-          margin="normal"
-          onChange={handleInputChange}
-        />
-      </Grid>
+      <TextField
+        component={"span"}
+        required
+        variant="outlined"
+        label="Ready In"
+        type="text"
+        name="readyIn"
+        id="readyIn"
+        fullWidth
+        margin="normal"
+        onChange={handleInputChange}
+      />
 
       <form>
         <input
