@@ -20,11 +20,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
 import { RecipesContext } from "../store/RecipesContext";
 
-const pages = [
-  { label: "Home", url: "/" },
-  { label: "Popular", url: "/#" },
-  { label: "Quick and easy", url: "/#" },
-];
+const pages = [{ label: "Home", url: "/" }];
 
 const settings = [{ label: "Profile", url: "/myprofile" }];
 

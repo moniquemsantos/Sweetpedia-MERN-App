@@ -6,9 +6,9 @@ import Footer from "../components/Footer";
 import { RecipesContext } from "../store/RecipesContext";
 
 function RecipeDetails() {
-  const { fetchResult } = useContext(RecipesContext);
+  const { recipes } = useContext(RecipesContext);
   const { id } = useParams();
-  const recipe = fetchResult.find((_recipe) => _recipe?._id === id);
+  const recipe = recipes.find((_recipe) => _recipe?._id === id);
 
   const getFormattedIngredients = (ingredients) => {
     return ingredients ? ingredients.split("\n") : [];

@@ -1,11 +1,13 @@
 import React from "react";
 import { createContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { getToken } from "../utils/getToken";
 
 export const AuthContext = createContext();
 
 export const AuthContextProvider = (props) => {
   const [loginUser, setLoginUser] = useState(null);
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     setLoginUser({ ...loginUser, [e.target.name]: e.target.value });
@@ -36,6 +38,7 @@ export const AuthContextProvider = (props) => {
           console.log(result.token);
           localStorage.setItem("token", result.token);
           setLoginUser(result.user);
+          navigate("/myprofile")
         }
       })
       .catch((error) => console.log("error", error));

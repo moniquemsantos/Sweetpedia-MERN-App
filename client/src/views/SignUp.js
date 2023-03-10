@@ -136,11 +136,6 @@ function SignUp() {
           >
             Sign Up
           </BtnSignUpStyle>
-          <div>
-            {newUser && (
-              <img src={newUser.userPicture} alt="" width={"152px"} />
-            )}
-          </div>
         </PaperSignUp>
       </Grid>
       <Footer />
