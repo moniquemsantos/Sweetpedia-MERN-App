@@ -39,32 +39,37 @@ const Profile = () => {
 
   return (
     <>
-      <Grid>
-        <Typography component={"span"} variant={"body2"}>
-          {" "}
-          Welcome {userProfile?.userName}
-        </Typography>
+      <Typography component={"span"}>
+        {" "}
+        WELCOME {userProfile?.userName}
+      </Typography>
 
-        <Typography component={"span"} variant={"body1"}>
-          {" "}
-          User Details{" "}
-        </Typography>
-        <Typography component={"span"} variant={"body2"}>
-          Email: {userProfile?.email}
-        </Typography>
-        <Typography component={"span"} variant={"body2"}>
-          Username:{userProfile?.userName}
-        </Typography>
-      </Grid>
-      <Grid>
+      <Grid component={"span"}>
         {userProfile && (
           <img
             src={userProfile.userPicture}
             alt="Avatar"
-            style={{ width: "152px" }}
+            style={{
+              width: "152px",
+              borderRadius: "50%",
+              aspectRatio: "1/1",
+              objectFit: "cover",
+            }}
           ></img>
         )}
       </Grid>
+
+      <Typography component={"span"} variant={"body1"}>
+        {" "}
+        User Details{" "}
+      </Typography>
+      <Typography component={"span"} variant={"body2"}>
+        Email: {userProfile?.email}
+      </Typography>
+
+      <Typography component={"span"} variant={"body2"}>
+        Username:{userProfile?.userName}
+      </Typography>
     </>
   );
 };

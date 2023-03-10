@@ -68,9 +68,7 @@ const SubmitRecipeForm = () => {
 
   return (
     <>
-      <Typography component={"span"} variant={"body2"}>
-        New Recipe
-      </Typography>
+      <Typography component={"div"}>New Recipe</Typography>
 
       <Grid>
         <TextField
@@ -154,12 +152,6 @@ const SubmitRecipeForm = () => {
       <BtnStyle onClick={addNewRecipe} type="submit" variant="contained">
         Submit Recipe
       </BtnStyle>
-
-      {/* <div>
-        {newRecipe && (
-          <img src={newRecipe.recipePicture} alt="" width={"500px"} />
-        )}
-      </div> */}
     </>
   );
 };

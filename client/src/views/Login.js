@@ -54,6 +54,6 @@ function Login() {
       <Footer />
     </>
   );
-};
+}
 
 export default Login;

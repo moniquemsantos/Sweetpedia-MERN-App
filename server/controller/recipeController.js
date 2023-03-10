@@ -21,7 +21,6 @@ const getAllRecipes = async (req, res) => {
 };
 
 const getRecipesByCategory = async (req, res) => {
-  //console.log("req>>>", req);
   const { category } = req.params;
 
   try {
