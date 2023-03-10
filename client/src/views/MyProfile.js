@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Tabs, Tab, Box, Typography } from "@mui/material";
+import { Tabs, Tab, Box } from "@mui/material";
 import Profile from "../components/Profile";
 import NewRecipe from "../components/NewRecipe";
 import AppBar from "../components/AppBar";
@@ -22,11 +22,7 @@ const MyProfile = () => {
         aria-labelledby={`simple-tab-${index}`}
         {...other}
       >
-        {value === index && (
-          <Box sx={{ p: 3 }}>
-            <Typography>{children}</Typography>
-          </Box>
-        )}
+        {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
       </div>
     );
   }
