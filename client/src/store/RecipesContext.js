@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
+import serverURL from "../utils/serverURL";
 
 export const RecipesContext = createContext();
 
@@ -19,7 +20,7 @@ export const RecipesContextProvider = (props) => {
 
   const fetchRecipes = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/recipes/all");
+      const response = await fetch(`${serverURL}/api/recipes/all`);
       const { allRecipes } = await response.json();
       // TODO: Remove this line after implementing a search endpoint in the backend.
       setFetched(allRecipes);

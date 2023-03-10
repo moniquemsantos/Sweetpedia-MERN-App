@@ -17,7 +17,7 @@ const Profile = () => {
         };
         try {
           const response = await fetch(
-            "http://localhost:5000/api/users/profile",
+            "https://sweetpedia-mern-app-server.vercel.app/api/users/profile",
             requestOptions
           );
           const result = await response.json();

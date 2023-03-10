@@ -10,6 +10,7 @@ import { Grid, TextField, Typography } from "@mui/material";
 import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
 import AppBar from "../components/AppBar";
 import Footer from "../components/Footer";
+import serverURL from "../utils/serverURL";
 
 function SignUp() {
   // Check email format, password lenght ...avoid making useless requests to the server
@@ -30,7 +31,7 @@ function SignUp() {
       body: formdata,
     };
 
-    fetch("http://localhost:5000/api/users/imageUpload", requestOptions)
+    fetch(`${serverURL}/api/users/imageUpload`, requestOptions)
       .then((response) => response.json())
       .then((result) => {
         console.log("result", result);
@@ -60,7 +61,10 @@ function SignUp() {
       body: urlencoded,
     };
 
-    fetch("http://localhost:5000/api/users/signup", requestOptions)
+    fetch(
+      "https://sweetpedia-mern-app-server.vercel.app/api/users/signup",
+      requestOptions
+    )
       .then((response) => response.json())
       .then((result) => console.log(result))
       .catch((error) => console.log("error", error));

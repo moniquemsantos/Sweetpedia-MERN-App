@@ -4,6 +4,7 @@ import { BtnStyle } from "../styles/addRecipe";
 import { TextField, Typography } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
+import serverURL from "../utils/serverURL";
 
 const SubmitRecipeForm = () => {
   const [selectFile, setSelectFile] = useState(null);
@@ -34,7 +35,10 @@ const SubmitRecipeForm = () => {
       redirect: "follow",
     };
 
-    fetch("http://localhost:5000/api/recipes/addrecipe", requestOptions)
+    fetch(
+      "https://sweetpedia-mern-app-server.vercel.app/api/recipes/addrecipe",
+      requestOptions
+    )
       .then((response) => response.json())
       .then((result) => console.log(result))
       .catch((error) => console.log("error", error));
@@ -53,10 +57,7 @@ const SubmitRecipeForm = () => {
       body: formdata,
     };
 
-    fetch(
-      "http://localhost:5000/api/recipes/image-recipe-upload",
-      requestOptions
-    )
+    fetch(`${serverURL}/api/recipes/image-recipe-upload`, requestOptions)
       .then((response) => response.json())
       .then((result) => {
         console.log("result", result);

@@ -2,6 +2,7 @@ import React from "react";
 import { createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getToken } from "../utils/getToken";
+import serverURL from "../utils/serverURL";
 
 export const AuthContext = createContext();
 
@@ -30,7 +31,7 @@ export const AuthContextProvider = (props) => {
       redirect: "follow",
     };
 
-    fetch("http://localhost:5000/api/users/login", requestOptions)
+    fetch(`${serverURL}/api/users/login`, requestOptions)
       .then((response) => response.json())
       .then((result) => {
         console.log(result);
@@ -38,7 +39,7 @@ export const AuthContextProvider = (props) => {
           console.log(result.token);
           localStorage.setItem("token", result.token);
           setLoginUser(result.user);
-          navigate("/myprofile")
+          navigate("/myprofile");
         }
       })
       .catch((error) => console.log("error", error));
